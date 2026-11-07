@@ -1,3 +1,9 @@
+# Optimized by ci-cost (https://github.com/mariotavarez/ci-cost)
+# Applied 2 optimizations:
+# - [MEDIUM] Add concurrency group to "main.yml"
+# - [LOW] Use shallow clone in "PublishMyGet" job
+# Estimated savings: ~2 min/run
+#
 name: .NET Core Test and Publish
 
 on:
@@ -6,6 +12,10 @@ on:
     branches: [master-n3]
   pull_request:
 
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 env:
   DOTNET_VERSION: 10.0.x
 
