@@ -1,6 +1,7 @@
 name: .NET Core Test and Publish
 
 on:
+  workflow_dispatch:
   push:
     branches: [master-n3]
   pull_request:
